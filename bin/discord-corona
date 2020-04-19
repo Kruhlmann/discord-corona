@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require "ostruct"
+require "discord-corona/discord-corona"
+include Bot
+
+options = OpenStruct.new
+OptionParser.new do |parser|
+  parser.banner = "Usage: discord-corona [options]"
+  parser.on("-k", "--discord-key=DISCORDKEY", "Discord API bot key"){ |k| options[:api_key] = k }
+end.parse!
+
+Bot.start(options)
